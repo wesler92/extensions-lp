@@ -145,7 +145,7 @@
     }
 
     .section {
-      margin-top: 48px;
+      /* margin-top: 48px; */
     }
 
     .section-title {
@@ -190,6 +190,21 @@
       box-shadow: 0 0 0 3px rgba(109, 141, 255, 0.2);
     }
 
+    #languageSelect {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f3f6ff;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 10px;
+      padding: 9px 12px;
+      min-width: 170px;
+      color-scheme: dark;
+    }
+
+    #languageSelect option {
+      background: #ffffff;
+      color: #101420;
+    }
+
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -220,7 +235,7 @@
 
     .extensions-grid {
       display: grid;
-      gap: 16px;
+      gap: 12px;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
@@ -232,7 +247,7 @@
       box-shadow: var(--shadow);
       text-decoration: none;
       color: inherit;
-      padding: 18px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       min-height: 250px;
@@ -369,32 +384,19 @@
 </head>
 <body>
   <div class="container">
-    <header class="hero">
-      <div class="hero-content">
-        <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px;">
-          <span class="eyebrow" id="eyebrowText">Chrome Extensions Portfolio</span>
-          <label for="languageSelect" style="display:flex;flex-direction:column;gap:6px;color:#d9e3ff;font-size:12px;">
-            <span id="languageLabel">Language</span>
-            <select id="languageSelect" aria-label="Language selector" style="background:rgba(255,255,255,0.08);color:#f3f6ff;border:1px solid rgba(255,255,255,0.22);border-radius:10px;padding:9px 12px;min-width:170px;">
-            </select>
-          </label>
-        </div>
-        <h1 id="heroTitle">Powerful Browser Extensions for Everyday Productivity</h1>
-        <p id="heroSubtitle">Discover simple, fast and useful Chrome extensions built to make your browsing experience better.</p>
-        <div class="hero-actions">
-          <a href="#extensions" class="cta" id="heroCta">Explore Extensions</a>
-        </div>
-      </div>
-    </header>
+    <div style="display:flex;justify-content:flex-end;">
+      <label for="languageSelect" style="display:flex;flex-direction:column;gap:6px;color:#d9e3ff;font-size:12px;">
+        <span id="languageLabel">Language</span>
+        <select id="languageSelect" aria-label="Language selector">
+        </select>
+      </label>
+    </div>
 
     <section class="section" id="extensions">
       <h2 class="section-title" id="sectionTitle">Featured Extensions</h2>
-      <p class="section-subtitle" id="sectionSubtitle">Choose from practical tools designed to save time, improve focus, and streamline daily browsing tasks.</p>
+      <!-- <p class="section-subtitle" id="sectionSubtitle">Choose from practical tools designed to save time, improve focus, and streamline daily browsing tasks.</p> -->
 
       <div class="controls">
-        <div class="search-wrap">
-          <input id="searchInput" type="text" placeholder="Search extensions...">
-        </div>
         <div class="filters" id="filterButtons"></div>
       </div>
 
@@ -479,19 +481,19 @@
       };
 
       const extensionData = [
-        { id: "img", icon: "https://lh3.googleusercontent.com/-2D7Iu4_cAyMYGxmF-pn1KYO78BjJhzjdOH-BnwnLac0c5PVyN841wCXtsHeifAPIpiJwY_9D8D6-Fv2rABBBsIYky0=s128", url: "https://chromewebstore.google.com/detail/mmehagcgobifajenenomcbbcdabnjooh", category: "tools", names: { en: "Image Downloader Assistant - Batch Save Images", pt_BR: "Assistente de Download de Imagens - Salve em Lote" }, descriptions: { en: "Save images from websites in seconds with a clean one-click workflow built for speed and convenience.", pt_BR: "Salve imagens de sites em segundos com um fluxo limpo de um clique." } },
-        { id: "video", icon: "https://lh3.googleusercontent.com/WPKtA0OSXayHlAIYtpyCf6jq7sUEvbQvKBsjixVx58f-m44t9Rqfr0i1itm2682uvxKNyzCcmTt8Tcx7G9xGSVA-r7w=s128", url: "https://chromewebstore.google.com/detail/gmpgnedihbpapkkeafjehjnlgnghlmjd", category: "media", names: { en: "Video Speed Controller - Universal Video Playback Speed", pt_BR: "Controlador de Velocidade de Vídeo" }, descriptions: { en: "Take control of your playback with smooth speed adjustments for lessons, podcasts, and streaming sessions." } },
-        { id: "qr", icon: "https://lh3.googleusercontent.com/I1knD14UiCTQON8jQ_OGdyMKFmYe6d8_iNreZ2f48mfdq1RSA3jzyd0A5cz1vY85yJUkT45_rNkqVv_sxWpwr_-ccA=s128", url: "https://chromewebstore.google.com/detail/afjjlnbbgojjefpnkfopdiajidjeijmb", category: "tools", names: { en: "QR Code Generator & Reader", pt_BR: "Gerador e Leitor de QR Code" }, descriptions: { en: "Create and scan QR codes instantly from your browser, ideal for links, sharing, and quick access workflows." } },
-        { id: "cleaner", icon: "https://lh3.googleusercontent.com/hHjmlc7O1IblCmydQopiNe--v_8ZoAIDJ0dbPL_9R9jkV-GQZWmad0x5qfHfoyhaX3O8L2NdnBaJKeftwPhTDieOUA=s128", url: "https://chromewebstore.google.com/detail/ibdojpbaclajkbmjmcfneimfnjpebcpo", category: "privacy", names: { en: "One-Click Cleaner - History, Cache & Cookies" }, descriptions: { en: "Clear browsing traces, cookies, and cache with one secure click to keep your browser private and optimized." } },
-        { id: "chroma", icon: "https://lh3.googleusercontent.com/W8IGrLaxDKLEpPcfSasZkkEjSdQUsgjEyin4KyfNLing9efyh9zHUuuoWBkm4ahNm07sSHIeGc-hSiAa1MWcFfMP=s128", url: "https://chromewebstore.google.com/detail/ghcgolhjnajkjeogfjkaakdfohebocfa", category: "tools", names: { en: "Chroma Color Picker" }, descriptions: { en: "Pick, copy, and manage accurate colors from any page with precision controls tailored for designers and developers." } },
-        { id: "crypto", icon: "https://lh3.googleusercontent.com/qz5axjSP8KmFJQ8BZAm9wH25uit7AhdQl_hgB_FvATRWl7K6D7myfrHtgQt5Hm93iI-74zL7OPRf__tt3cyf7oSaRQ=s128", url: "https://chromewebstore.google.com/detail/fiebjoapbhobkgnfkeefpjfembalkngj", category: "finance", names: { en: "Real-Time Crypto Price Alert Tracker" }, descriptions: { en: "Track crypto markets in real time and receive smart alerts so you can react faster to every important move." } },
-        { id: "calc", icon: "https://lh3.googleusercontent.com/pWfOSqGubNHaRR4uVCAo4LERubsMkC3MnLziC26tnKp1lkTfDKeXCLZfL1KX6ogxGhTzBDTwwdfCKCgW1e2Ng6nI8Uw=s128", url: "https://chromewebstore.google.com/detail/bajijfddodanimeolonbjdaehmphfkpp", category: "tools", names: { en: "Calculator Plus - Dark Mode & Keyboard" }, descriptions: { en: "Handle quick calculations directly in your browser with a polished interface built for everyday accuracy." } },
-        { id: "monitix", icon: "https://lh3.googleusercontent.com/v6vDgedIpXZU2WcZ8I_mqXHvU-ehfVGYvaShsnSuXDvSl_sUvX_5wxJFc_hs48tyabvWcFdlivaW-1Og9YGEQ5Ssbek=s128", url: "https://chromewebstore.google.com/detail/cjekmkpgodnejbnmpkbaaoaaggbknjjm", category: "productivity", names: { en: "Monitix - Stock & Crypto Price Alert & Tracker" }, descriptions: { en: "Stay on top of your daily workflow with focused monitoring tools that help you work smarter, not harder." } },
-        { id: "alarm", icon: "https://lh3.googleusercontent.com/hnrhNE1eeghpv5olY1JZPvhapQw9IhwE2PHlTLKIrVmCrPK-n7JlDe2eem-wn73eCAebrKGTpDrOjds88a0-cwg10q4=s128", url: "https://chromewebstore.google.com/detail/dobehameiiojoddgpdjjgonghbjejfjk", category: "productivity", names: { en: "Alarm, Timer & Stopwatch for Browser", pt_BR: "Alarme, Timer e Cronômetro para Navegador" }, descriptions: { en: "Manage tasks and breaks with reliable alarms, timers, and stopwatch tools that keep your schedule on track." } },
-        { id: "clock", icon: "https://lh3.googleusercontent.com/Z7ccr1fU_n3XxnC6ju5SqkvO5UMmTLz3AO32yu_C42rHg3kl92XF5sFoY_Ueq4fVX272csRvP3bK1Fczhkz5fn6P31I=s128", url: "https://chromewebstore.google.com/detail/najjeheikebkcgojohngpeapdambdlnh", category: "productivity", names: { en: "Clock, Alarm, Timer & Stopwatch", pt_BR: "Relógio, Alarme, Temporizador e Cronômetro" }, descriptions: { en: "Keep your day organized with an all-in-one time toolkit designed for focus, planning, and better routines." } },
-        { id: "capture", icon: "https://lh3.googleusercontent.com/97dPGEq2lWCLGV76EJCKRZN8J5WKIZa3g0pmFAHPN_9anXKX5vcEbENHAuKQj-HMCW26E7tvifwIWOREbordzLW2Dw=s128", url: "https://chromewebstore.google.com/detail/cmfoidiacmlllaifebpdflabafobibnk", category: "tools", names: { en: "Full Page Capture - Screenshot Tool" }, descriptions: { en: "Capture complete website screenshots with one click, perfect for reports, references, and visual collaboration." } },
-        { id: "undo", icon: "https://lh3.googleusercontent.com/T4Sage3T7X4fogqiBJomwmVTh7AjXE47y3UKL-EfDeppAN4xJ8UeMHWW9AwVWw_XopYQGzdhxcRGauDBX9O3NHud=s128", url: "https://chromewebstore.google.com/detail/pmiplgmplhmiaieiggpnoocpbdlcoino", category: "productivity", names: { en: "Undo Closed Tabs - Reopen Last Tab", pt_BR: "Desfazer Abas Fechadas" }, descriptions: { en: "Reopen closed tabs instantly and recover your browsing flow without interruptions or lost context." } },
-        { id: "pomodoro", icon: "https://lh3.googleusercontent.com/H3mwUdU9YpOA_qd4A-nmXnFcLgLcBAadiMPJR7v2OZAsZVJMEaBQtPHvEyMb9ywSdEyQUP5-vYHpszU4nxBbuUPoZQ=s128", url: "https://chromewebstore.google.com/detail/bkbiklcbhkpphflodkdoedlokkknnebh", category: "productivity", names: { en: "Pomodoro Focus Timer" }, descriptions: { en: "Boost concentration with a clean Pomodoro timer workflow that helps you stay focused and avoid burnout." } }
+        { id: "img", icon: "https://lh3.googleusercontent.com/-2D7Iu4_cAyMYGxmF-pn1KYO78BjJhzjdOH-BnwnLac0c5PVyN841wCXtsHeifAPIpiJwY_9D8D6-Fv2rABBBsIYky0=s128", url: "https://chromewebstore.google.com/detail/mmehagcgobifajenenomcbbcdabnjooh", category: "tools", names: { en: "Image Downloader Assistant - Batch Save Images", pt_BR: "Assistente de Download de Imagens - Salvar em Lote", es: "Asistente de Descarga de Imágenes - Guardado por Lotes", fr: "Assistant de Téléchargement d'Images - Sauvegarde par Lots", de: "Bild-Download-Assistent - Bilder im Paket speichern", it: "Assistente Download Immagini - Salvataggio in Blocco", ja: "画像ダウンロードアシスタント - 一括保存", ko: "이미지 다운로드 도우미 - 일괄 저장", zh_CN: "图片下载助手 - 批量保存", ru: "Помощник загрузки изображений - пакетное сохранение", ar: "مساعد تنزيل الصور - حفظ دفعي", hi: "इमेज डाउनलोड असिस्टेंट - बैच सेव", tr: "Gorsel Indirme Asistani - Toplu Kaydetme" }, descriptions: { en: "Save images from websites in seconds with a clean one-click workflow built for speed and convenience.", pt_BR: "Salve imagens de sites em segundos com um fluxo de um clique rapido e pratico.", es: "Guarda imagenes de sitios web en segundos con un flujo limpio de un clic.", fr: "Enregistrez des images de sites en quelques secondes avec un flux clair en un clic.", de: "Speichern Sie Bilder von Websites in Sekunden mit einem klaren Ein-Klick-Workflow.", it: "Salva immagini dai siti in pochi secondi con un flusso pulito a un clic.", ja: "ワンクリックの快適な操作で、Webサイトの画像を数秒で保存できます。", ko: "원클릭 워크플로우로 웹사이트 이미지를 몇 초 만에 저장하세요.", zh_CN: "通过简洁的一键流程，在几秒内保存网页图片。", ru: "Сохраняйте изображения с сайтов за секунды с удобным рабочим процессом в один клик.", ar: "احفظ الصور من المواقع خلال ثوان عبر سير عمل نظيف بنقرة واحدة.", hi: "एक साफ वन-क्लिक वर्कफ्लो के साथ वेबसाइट से इमेज सेकंडों में सेव करें।", tr: "Temiz tek tik akisiyla web sitelerindeki gorselleri saniyeler icinde kaydedin." } },
+        { id: "video", icon: "https://lh3.googleusercontent.com/WPKtA0OSXayHlAIYtpyCf6jq7sUEvbQvKBsjixVx58f-m44t9Rqfr0i1itm2682uvxKNyzCcmTt8Tcx7G9xGSVA-r7w=s128", url: "https://chromewebstore.google.com/detail/gmpgnedihbpapkkeafjehjnlgnghlmjd", category: "media", names: { en: "Video Speed Controller - Universal Video Playback Speed", pt_BR: "Controlador de Velocidade de Video", es: "Controlador de Velocidad de Video", fr: "Controleur de Vitesse Video", de: "Video-Geschwindigkeitsregler", it: "Controllo Velocita Video", ja: "動画速度コントローラー", ko: "비디오 속도 컨트롤러", zh_CN: "视频速度控制器", ru: "Контроллер скорости видео", ar: "وحدة التحكم بسرعة الفيديو", hi: "वीडियो स्पीड कंट्रोलर", tr: "Video Hiz Denetleyici" }, descriptions: { en: "Take control of your playback with smooth speed adjustments for lessons, podcasts, and streaming sessions.", pt_BR: "Controle a reproducao com ajustes suaves de velocidade para aulas, podcasts e streaming.", es: "Controla la reproduccion con ajustes suaves de velocidad para clases, podcasts y streaming.", fr: "Controlez la lecture avec des ajustements fluides de vitesse pour cours, podcasts et streaming.", de: "Steuern Sie die Wiedergabe mit flussigen Geschwindigkeitsanpassungen fur Kurse, Podcasts und Streaming.", it: "Controlla la riproduzione con regolazioni fluide della velocita per lezioni, podcast e streaming.", ja: "レッスン、ポッドキャスト、配信向けに再生速度をスムーズに調整できます。", ko: "강의, 팟캐스트, 스트리밍에 맞춰 재생 속도를 부드럽게 조절하세요.", zh_CN: "为课程、播客和流媒体提供流畅的播放速度调节。", ru: "Управляйте воспроизведением с плавной настройкой скорости для уроков, подкастов и стриминга.", ar: "تحكم في التشغيل عبر ضبط سلس للسرعة للدروس والبودكاست والبث.", hi: "कक्षाओं, पॉडकास्ट और स्ट्रीमिंग के लिए प्लेबैक स्पीड को स्मूथ तरीके से कंट्रोल करें।", tr: "Dersler, podcastler ve yayinlar icin oynatma hizini akici sekilde ayarlayin." } },
+        { id: "qr", icon: "https://lh3.googleusercontent.com/I1knD14UiCTQON8jQ_OGdyMKFmYe6d8_iNreZ2f48mfdq1RSA3jzyd0A5cz1vY85yJUkT45_rNkqVv_sxWpwr_-ccA=s128", url: "https://chromewebstore.google.com/detail/afjjlnbbgojjefpnkfopdiajidjeijmb", category: "tools", names: { en: "QR Code Generator & Reader", pt_BR: "Gerador e Leitor de QR Code", es: "Generador y Lector de Codigo QR", fr: "Generateur et Lecteur de Code QR", de: "QR-Code-Generator und Leser", it: "Generatore e Lettore di Codici QR", ja: "QRコード生成&リーダー", ko: "QR 코드 생성기 및 리더", zh_CN: "二维码生成与读取器", ru: "Генератор и сканер QR-кодов", ar: "مولد وقارئ رمز QR", hi: "QR कोड जनरेटर और रीडर", tr: "QR Kod Olusturucu ve Okuyucu" }, descriptions: { en: "Create and scan QR codes instantly from your browser, ideal for links, sharing, and quick access workflows.", pt_BR: "Crie e leia QR codes instantaneamente no navegador para links, compartilhamento e acesso rapido.", es: "Crea y escanea codigos QR al instante desde el navegador para enlaces y uso rapido.", fr: "Creez et scannez des QR codes instantanement depuis le navigateur pour liens et partage.", de: "Erstellen und scannen Sie QR-Codes sofort im Browser fur Links und schnelles Teilen.", it: "Crea e scansiona codici QR istantaneamente dal browser per link e condivisione rapida.", ja: "ブラウザ上でQRコードを即座に作成・読み取りし、共有やリンク利用を高速化します。", ko: "브라우저에서 즉시 QR 코드를 생성하고 스캔해 공유와 빠른 접근을 지원합니다.", zh_CN: "在浏览器中即时生成和扫描二维码，适合链接分享与快速访问。", ru: "Создавайте и сканируйте QR-коды прямо в браузере для ссылок и быстрого доступа.", ar: "انشئ واقرأ رموز QR فورا من المتصفح للروابط والمشاركة والوصول السريع.", hi: "ब्राउज़र में तुरंत QR कोड बनाएं और स्कैन करें, लिंक शेयरिंग और तेज़ एक्सेस के लिए।", tr: "Tarayicida aninda QR kod olusturun ve tarayin; baglanti paylasimi ve hizli erisim icin idealdir." } },
+        { id: "cleaner", icon: "https://lh3.googleusercontent.com/hHjmlc7O1IblCmydQopiNe--v_8ZoAIDJ0dbPL_9R9jkV-GQZWmad0x5qfHfoyhaX3O8L2NdnBaJKeftwPhTDieOUA=s128", url: "https://chromewebstore.google.com/detail/ibdojpbaclajkbmjmcfneimfnjpebcpo", category: "privacy", names: { en: "One-Click Cleaner - History, Cache & Cookies", pt_BR: "Limpador de Um Clique - Historico, Cache e Cookies", es: "Limpiador en Un Clic - Historial, Cache y Cookies", fr: "Nettoyeur en un Clic - Historique, Cache et Cookies", de: "Ein-Klick-Cleaner - Verlauf, Cache und Cookies", it: "Pulizia con un Clic - Cronologia, Cache e Cookie", ja: "ワンクリッククリーナー - 履歴・キャッシュ・Cookie", ko: "원클릭 클리너 - 방문기록, 캐시, 쿠키", zh_CN: "一键清理器 - 历史记录、缓存和 Cookie", ru: "Очистка в один клик - история, кэш и cookie", ar: "منظف بنقرة واحدة - السجل والذاكرة المؤقتة وملفات تعريف الارتباط", hi: "वन-क्लिक क्लीनर - हिस्ट्री, कैश और कुकीज", tr: "Tek Tik Temizleyici - Gecmis, Onbellek ve Cerezler" }, descriptions: { en: "Clear browsing traces, cookies, and cache with one secure click to keep your browser private and optimized.", pt_BR: "Limpe rastros de navegacao, cookies e cache com um clique seguro para mais privacidade.", es: "Limpia rastros de navegacion, cookies y cache con un clic seguro para mayor privacidad.", fr: "Effacez les traces de navigation, cookies et cache en un clic securise pour plus de confidentialite.", de: "Loschen Sie Surfspuren, Cookies und Cache mit einem sicheren Klick fur mehr Datenschutz.", it: "Cancella tracce di navigazione, cookie e cache con un clic sicuro per maggiore privacy.", ja: "安全なワンクリックで履歴、Cookie、キャッシュを削除し、ブラウザを最適化します。", ko: "안전한 한 번의 클릭으로 기록, 쿠키, 캐시를 정리해 개인정보를 보호하세요.", zh_CN: "通过安全的一键操作清除浏览痕迹、Cookie 与缓存，保护隐私并优化浏览器。", ru: "Удаляйте следы просмотра, cookie и кэш одним безопасным кликом для приватности и скорости.", ar: "امسح اثار التصفح وملفات تعريف الارتباط والذاكرة المؤقتة بنقرة آمنة للحفاظ على الخصوصية.", hi: "एक सुरक्षित क्लिक में ब्राउज़िंग ट्रेस, कुकीज़ और कैश साफ करें और प्राइवेसी बढ़ाएं।", tr: "Gizliligi korumak ve tarayiciyi hizlandirmak icin gezinme izlerini tek guvenli tikla temizleyin." } },
+        { id: "chroma", icon: "https://lh3.googleusercontent.com/W8IGrLaxDKLEpPcfSasZkkEjSdQUsgjEyin4KyfNLing9efyh9zHUuuoWBkm4ahNm07sSHIeGc-hSiAa1MWcFfMP=s128", url: "https://chromewebstore.google.com/detail/ghcgolhjnajkjeogfjkaakdfohebocfa", category: "tools", names: { en: "Chroma Color Picker", pt_BR: "Seletor de Cores Chroma", es: "Selector de Color Chroma", fr: "Pipette Couleur Chroma", de: "Chroma-Farbwahler", it: "Selettore Colore Chroma", ja: "Chroma カラーピッカー", ko: "Chroma 컬러 피커", zh_CN: "Chroma 取色器", ru: "Пипетка цвета Chroma", ar: "منتقي الالوان Chroma", hi: "Chroma कलर पिकर", tr: "Chroma Renk Secici" }, descriptions: { en: "Pick, copy, and manage accurate colors from any page with precision controls tailored for designers and developers.", pt_BR: "Capture, copie e gerencie cores precisas de qualquer pagina com controle para designers e devs.", es: "Toma, copia y gestiona colores precisos de cualquier pagina con controles para diseno y desarrollo.", fr: "Prelevez, copiez et gerez des couleurs precises depuis n'importe quelle page.", de: "Wahlen, kopieren und verwalten Sie prazise Farben von jeder Seite fur Design und Entwicklung.", it: "Preleva, copia e gestisci colori precisi da qualsiasi pagina con controlli professionali.", ja: "任意のページから正確な色を取得・コピー・管理できる、開発者向けツールです。", ko: "디자이너와 개발자를 위해 모든 페이지에서 정확한 색상을 추출하고 관리하세요.", zh_CN: "为设计师和开发者提供精准取色、复制与管理功能。", ru: "Выбирайте, копируйте и управляйте точными цветами с любой страницы.", ar: "التقط الالوان بدقة من اي صفحة وانسخها وادِرها بسهولة للمصممين والمطورين.", hi: "किसी भी पेज से सटीक रंग चुनें, कॉपी करें और मैनेज करें।", tr: "Tasarimci ve gelistiriciler icin herhangi bir sayfadan hassas renk secin, kopyalayin ve yonetin." } },
+        { id: "crypto", icon: "https://lh3.googleusercontent.com/qz5axjSP8KmFJQ8BZAm9wH25uit7AhdQl_hgB_FvATRWl7K6D7myfrHtgQt5Hm93iI-74zL7OPRf__tt3cyf7oSaRQ=s128", url: "https://chromewebstore.google.com/detail/fiebjoapbhobkgnfkeefpjfembalkngj", category: "finance", names: { en: "Real-Time Crypto Price Alert Tracker", pt_BR: "Monitor de Alertas de Preco Cripto em Tempo Real", es: "Rastreador de Alertas Cripto en Tiempo Real", fr: "Suivi d'Alertes Crypto en Temps Reel", de: "Echtzeit-Krypto-Preisalarm-Tracker", it: "Tracker Avvisi Prezzi Crypto in Tempo Reale", ja: "リアルタイム暗号資産価格アラート", ko: "실시간 암호화폐 가격 알림 추적기", zh_CN: "实时加密货币价格提醒追踪器", ru: "Трекер оповещений цен криптовалют в реальном времени", ar: "متتبع تنبيهات اسعار العملات الرقمية لحظيا", hi: "रियल-टाइम क्रिप्टो प्राइस अलर्ट ट्रैकर", tr: "Gercek Zamanli Kripto Fiyat Alarm Takipcisi" }, descriptions: { en: "Track crypto markets in real time and receive smart alerts so you can react faster to every important move.", pt_BR: "Acompanhe o mercado cripto em tempo real e receba alertas inteligentes para agir mais rapido.", es: "Sigue el mercado cripto en tiempo real y recibe alertas inteligentes para reaccionar rapido.", fr: "Suivez le marche crypto en temps reel et recevez des alertes intelligentes pour reagir vite.", de: "Verfolgen Sie Kryptomarkte in Echtzeit und erhalten Sie intelligente Alarme fur schnelle Reaktionen.", it: "Monitora i mercati crypto in tempo reale e ricevi avvisi intelligenti per reagire rapidamente.", ja: "暗号資産市場をリアルタイムで追跡し、重要な変動をスマート通知で把握できます。", ko: "암호화폐 시장을 실시간으로 추적하고 스마트 알림으로 빠르게 대응하세요.", zh_CN: "实时追踪加密市场，并通过智能提醒更快响应关键波动。", ru: "Следите за крипторынком в реальном времени и получайте умные уведомления.", ar: "تابع سوق العملات الرقمية لحظيا وتلق تنبيهات ذكية للاستجابة بسرعة.", hi: "क्रिप्टो मार्केट को रियल-टाइम में ट्रैक करें और स्मार्ट अलर्ट के साथ तेजी से प्रतिक्रिया दें।", tr: "Kripto piyasasini gercek zamanli izleyin ve onemli hareketlerde akilli alarmlar alin." } },
+        { id: "calc", icon: "https://lh3.googleusercontent.com/pWfOSqGubNHaRR4uVCAo4LERubsMkC3MnLziC26tnKp1lkTfDKeXCLZfL1KX6ogxGhTzBDTwwdfCKCgW1e2Ng6nI8Uw=s128", url: "https://chromewebstore.google.com/detail/bajijfddodanimeolonbjdaehmphfkpp", category: "tools", names: { en: "Calculator Plus - Dark Mode & Keyboard", pt_BR: "Calculadora Plus - Modo Escuro e Teclado", es: "Calculadora Plus - Modo Oscuro y Teclado", fr: "Calculatrice Plus - Mode Sombre et Clavier", de: "Calculator Plus - Dunkelmodus und Tastatur", it: "Calcolatrice Plus - Modalita Scura e Tastiera", ja: "Calculator Plus - ダークモード&キーボード", ko: "Calculator Plus - 다크 모드 및 키보드", zh_CN: "Calculator Plus - 深色模式与键盘", ru: "Calculator Plus - темная тема и клавиатура", ar: "Calculator Plus - الوضع الداكن ولوحة المفاتيح", hi: "Calculator Plus - डार्क मोड और कीबोर्ड", tr: "Calculator Plus - Karanlik Mod ve Klavye" }, descriptions: { en: "Handle quick calculations directly in your browser with a polished interface built for everyday accuracy.", pt_BR: "Faca calculos rapidos no navegador com uma interface refinada e precisa para o dia a dia.", es: "Realiza calculos rapidos en el navegador con una interfaz pulida y precisa.", fr: "Effectuez des calculs rapides dans le navigateur avec une interface elegante et precise.", de: "Erledigen Sie schnelle Berechnungen direkt im Browser mit einer prazisen, eleganten Oberflache.", it: "Esegui calcoli rapidi direttamente nel browser con un'interfaccia curata e precisa.", ja: "日常利用に最適な洗練されたUIで、ブラウザ上ですばやく計算できます。", ko: "세련된 인터페이스로 브라우저에서 빠르고 정확한 계산을 수행하세요.", zh_CN: "通过精致界面在浏览器中快速完成日常计算。", ru: "Выполняйте быстрые вычисления прямо в браузере с удобным и точным интерфейсом.", ar: "اجر حسابات سريعة مباشرة من المتصفح بواجهة انيقة ودقيقة للاستخدام اليومي.", hi: "ब्राउज़र में तेज़ और सटीक दैनिक गणनाओं के लिए polished इंटरफेस का उपयोग करें।", tr: "Gunluk dogru hesaplamalar icin tarayicida hizli hesaplar yapin." } },
+        { id: "monitix", icon: "https://lh3.googleusercontent.com/v6vDgedIpXZU2WcZ8I_mqXHvU-ehfVGYvaShsnSuXDvSl_sUvX_5wxJFc_hs48tyabvWcFdlivaW-1Og9YGEQ5Ssbek=s128", url: "https://chromewebstore.google.com/detail/cjekmkpgodnejbnmpkbaaoaaggbknjjm", category: "productivity", names: { en: "Monitix - Stock & Crypto Price Alert & Tracker", pt_BR: "Monitix - Alerta e Rastreador de Acoes e Cripto", es: "Monitix - Alertas y Seguimiento de Acciones y Cripto", fr: "Monitix - Alertes et Suivi Actions & Crypto", de: "Monitix - Aktien- und Krypto-Alarm-Tracker", it: "Monitix - Avvisi e Tracker Azioni & Crypto", ja: "Monitix - 株式&暗号資産アラート", ko: "Monitix - 주식 및 암호화폐 알림 추적기", zh_CN: "Monitix - 股票与加密价格提醒", ru: "Monitix - уведомления и трекер акций и криптовалют", ar: "Monitix - تنبيهات وتتبع الاسهم والعملات الرقمية", hi: "Monitix - स्टॉक और क्रिप्टो अलर्ट ट्रैकर", tr: "Monitix - Hisse ve Kripto Alarm Takipcisi" }, descriptions: { en: "Stay on top of your daily workflow with focused monitoring tools that help you work smarter, not harder.", pt_BR: "Mantenha seu fluxo diario sob controle com monitoramento focado para trabalhar melhor.", es: "Mantente al dia con herramientas de monitoreo enfocadas para trabajar de forma mas inteligente.", fr: "Restez maitre de votre flux quotidien avec des outils de suivi pour travailler plus intelligemment.", de: "Behalten Sie Ihren Tagesablauf mit fokussierten Monitoring-Tools im Griff.", it: "Rimani sul pezzo con strumenti di monitoraggio mirati per lavorare in modo piu intelligente.", ja: "集中型モニタリングで日々のワークフローを最適化し、生産性を高めます。", ko: "집중형 모니터링 도구로 일상 워크플로우를 더 스마트하게 관리하세요.", zh_CN: "通过专注的监控工具掌控日常工作流程，更高效地工作。", ru: "Контролируйте ежедневный рабочий процесс с помощью удобных инструментов мониторинга.", ar: "تابع سير عملك اليومي بادوات مراقبة مركزة لتعمل بذكاء اكبر.", hi: "फोकस्ड मॉनिटरिंग टूल्स के साथ अपने दैनिक वर्कफ़्लो पर नियंत्रण रखें।", tr: "Odakli izleme araclariyla gunluk is akisinizi daha akilli yonetin." } },
+        { id: "alarm", icon: "https://lh3.googleusercontent.com/hnrhNE1eeghpv5olY1JZPvhapQw9IhwE2PHlTLKIrVmCrPK-n7JlDe2eem-wn73eCAebrKGTpDrOjds88a0-cwg10q4=s128", url: "https://chromewebstore.google.com/detail/dobehameiiojoddgpdjjgonghbjejfjk", category: "productivity", names: { en: "Alarm, Timer & Stopwatch for Browser", pt_BR: "Alarme, Timer e Cronometro para Navegador", es: "Alarma, Temporizador y Cronometro para Navegador", fr: "Alarme, Minuteur et Chronometre pour Navigateur", de: "Alarm, Timer und Stoppuhr fur Browser", it: "Allarme, Timer e Cronometro per Browser", ja: "ブラウザ用アラーム・タイマー・ストップウォッチ", ko: "브라우저용 알람, 타이머, 스톱워치", zh_CN: "浏览器闹钟、计时器和秒表", ru: "Будильник, таймер и секундомер для браузера", ar: "منبه ومؤقت وساعة ايقاف للمتصفح", hi: "ब्राउज़र के लिए अलार्म, टाइमर और स्टॉपवॉच", tr: "Tarayici icin Alarm, Zamanlayici ve Kronometre" }, descriptions: { en: "Manage tasks and breaks with reliable alarms, timers, and stopwatch tools that keep your schedule on track.", pt_BR: "Gerencie tarefas e pausas com alarmes, timers e cronometro confiaveis.", es: "Gestiona tareas y descansos con alarmas, temporizadores y cronometro confiables.", fr: "Gerez taches et pauses avec des alarmes, minuteurs et chronometre fiables.", de: "Verwalten Sie Aufgaben und Pausen mit zuverlassigen Alarmen, Timern und Stoppuhr.", it: "Gestisci attivita e pause con allarmi, timer e cronometro affidabili.", ja: "信頼性の高いアラーム、タイマー、ストップウォッチで作業と休憩を管理します。", ko: "신뢰할 수 있는 알람, 타이머, 스톱워치로 작업과 휴식을 관리하세요.", zh_CN: "使用可靠的闹钟、计时器和秒表管理任务与休息。", ru: "Управляйте задачами и перерывами с надежными будильником, таймером и секундомером.", ar: "نظم المهام والاستراحات باستخدام منبهات ومؤقتات موثوقة.", hi: "विश्वसनीय अलार्म, टाइमर और स्टॉपवॉच के साथ कार्य और ब्रेक मैनेज करें।", tr: "Gorev ve molalari guvenilir alarm, zamanlayici ve kronometre ile yonetin." } },
+        { id: "clock", icon: "https://lh3.googleusercontent.com/Z7ccr1fU_n3XxnC6ju5SqkvO5UMmTLz3AO32yu_C42rHg3kl92XF5sFoY_Ueq4fVX272csRvP3bK1Fczhkz5fn6P31I=s128", url: "https://chromewebstore.google.com/detail/najjeheikebkcgojohngpeapdambdlnh", category: "productivity", names: { en: "Clock, Alarm, Timer & Stopwatch", pt_BR: "Relogio, Alarme, Temporizador e Cronometro", es: "Reloj, Alarma, Temporizador y Cronometro", fr: "Horloge, Alarme, Minuteur et Chronometre", de: "Uhr, Alarm, Timer und Stoppuhr", it: "Orologio, Allarme, Timer e Cronometro", ja: "時計・アラーム・タイマー・ストップウォッチ", ko: "시계, 알람, 타이머, 스톱워치", zh_CN: "时钟、闹钟、计时器和秒表", ru: "Часы, будильник, таймер и секундомер", ar: "ساعة ومنبه ومؤقت وساعة ايقاف", hi: "घड़ी, अलार्म, टाइमर और स्टॉपवॉच", tr: "Saat, Alarm, Zamanlayici ve Kronometre" }, descriptions: { en: "Keep your day organized with an all-in-one time toolkit designed for focus, planning, and better routines.", pt_BR: "Organize seu dia com um kit completo de tempo para foco, planejamento e rotina.", es: "Organiza tu dia con un kit de tiempo todo en uno para enfoque y planificacion.", fr: "Organisez votre journee avec une boite a outils du temps tout-en-un pour mieux planifier.", de: "Organisieren Sie Ihren Tag mit einem All-in-One-Zeitwerkzeug fur Fokus und Planung.", it: "Organizza la giornata con un toolkit completo del tempo per focus e pianificazione.", ja: "集中と計画に役立つオールインワン時間ツールで一日を整理できます。", ko: "집중과 계획에 최적화된 올인원 시간 도구로 하루를 체계적으로 관리하세요.", zh_CN: "使用一体化时间工具包，让你的专注与计划更高效。", ru: "Организуйте день с универсальным набором инструментов времени для фокуса и планирования.", ar: "نظم يومك باداة وقت متكاملة تساعد على التركيز والتخطيط.", hi: "फोकस, योजना और बेहतर दिनचर्या के लिए ऑल-इन-वन टाइम टूलकिट।", tr: "Odak ve planlama icin tasarlanmis hepsi bir arada zaman araci ile gununuzu duzenleyin." } },
+        { id: "capture", icon: "https://lh3.googleusercontent.com/97dPGEq2lWCLGV76EJCKRZN8J5WKIZa3g0pmFAHPN_9anXKX5vcEbENHAuKQj-HMCW26E7tvifwIWOREbordzLW2Dw=s128", url: "https://chromewebstore.google.com/detail/cmfoidiacmlllaifebpdflabafobibnk", category: "tools", names: { en: "Full Page Capture - Screenshot Tool", pt_BR: "Captura de Pagina Inteira - Ferramenta de Screenshot", es: "Captura de Pagina Completa - Herramienta de Screenshot", fr: "Capture de Page Complete - Outil de Capture", de: "Vollseitenaufnahme - Screenshot-Tool", it: "Cattura Pagina Completa - Strumento Screenshot", ja: "フルページキャプチャ - スクリーンショットツール", ko: "전체 페이지 캡처 - 스크린샷 도구", zh_CN: "整页截图 - 截图工具", ru: "Полный снимок страницы - инструмент скриншотов", ar: "التقاط الصفحة كاملة - اداة لقطة شاشة", hi: "फुल पेज कैप्चर - स्क्रीनशॉट टूल", tr: "Tam Sayfa Yakalama - Ekran Goruntusu Araci" }, descriptions: { en: "Capture complete website screenshots with one click, perfect for reports, references, and visual collaboration.", pt_BR: "Capture paginas completas com um clique, ideal para relatorios e colaboracao visual.", es: "Captura paginas completas con un clic, ideal para reportes y colaboracion visual.", fr: "Capturez des pages web completes en un clic, ideal pour rapports et collaboration visuelle.", de: "Erfassen Sie komplette Webseiten mit einem Klick, ideal fur Berichte und Zusammenarbeit.", it: "Cattura pagine web complete con un clic, ideale per report e collaborazione visiva.", ja: "Webページ全体をワンクリックで撮影。レポートや共有作業に最適です。", ko: "한 번의 클릭으로 전체 웹페이지를 캡처해 리포트와 협업에 활용하세요.", zh_CN: "一键截取完整网页，适合报告、存档与视觉协作。", ru: "Делайте полный скриншот сайта в один клик для отчетов и совместной работы.", ar: "التقط صفحة ويب كاملة بنقرة واحدة، مثالي للتقارير والتعاون المرئي.", hi: "एक क्लिक में पूरी वेबपेज कैप्चर करें, रिपोर्ट और विजुअल सहयोग के लिए आदर्श।", tr: "Web sayfalarinin tamamini tek tikla yakalayin; raporlar ve gorsel is birligi icin idealdir." } },
+        { id: "undo", icon: "https://lh3.googleusercontent.com/T4Sage3T7X4fogqiBJomwmVTh7AjXE47y3UKL-EfDeppAN4xJ8UeMHWW9AwVWw_XopYQGzdhxcRGauDBX9O3NHud=s128", url: "https://chromewebstore.google.com/detail/pmiplgmplhmiaieiggpnoocpbdlcoino", category: "productivity", names: { en: "Undo Closed Tabs - Reopen Last Tab", pt_BR: "Desfazer Abas Fechadas - Reabrir Ultima Aba", es: "Deshacer Pestanas Cerradas - Reabrir Ultima Pestana", fr: "Annuler Onglets Fermes - Rouvrir le Dernier Onglet", de: "Geschlossene Tabs wiederherstellen - Letzten Tab erneut offnen", it: "Ripristina Schede Chiuse - Riapri Ultima Scheda", ja: "閉じたタブを元に戻す - 最後のタブを再表示", ko: "닫은 탭 복원 - 마지막 탭 다시 열기", zh_CN: "撤销关闭标签页 - 重新打开最后一个标签", ru: "Вернуть закрытые вкладки - открыть последнюю вкладку", ar: "استعادة علامات التبويب المغلقة - اعادة فتح اخر علامة", hi: "बंद टैब वापस लाएं - आख़िरी टैब फिर खोलें", tr: "Kapanan Sekmeleri Geri Al - Son Sekmeyi Yeniden Ac" }, descriptions: { en: "Reopen closed tabs instantly and recover your browsing flow without interruptions or lost context.", pt_BR: "Reabra abas fechadas instantaneamente e recupere seu fluxo de navegacao sem interrupcoes.", es: "Reabre pestanas cerradas al instante y recupera tu flujo de navegacion sin interrupciones.", fr: "Rouvrez instantanement les onglets fermes et reprenez votre navigation sans interruption.", de: "Offnen Sie geschlossene Tabs sofort wieder und setzen Sie Ihren Browser-Flow ohne Unterbrechung fort.", it: "Riapri subito le schede chiuse e riprendi la navigazione senza perdere il contesto.", ja: "閉じたタブを即座に復元し、作業の流れを中断なく続けられます。", ko: "닫힌 탭을 즉시 복원해 흐름을 끊지 않고 브라우징을 이어가세요.", zh_CN: "即时恢复已关闭标签页，不中断你的浏览流程。", ru: "Мгновенно открывайте закрытые вкладки и продолжайте работу без потери контекста.", ar: "اعد فتح علامات التبويب المغلقة فورا واستعد سير التصفح دون انقطاع.", hi: "बंद टैब तुरंत दोबारा खोलें और बिना बाधा ब्राउज़िंग फ्लो जारी रखें।", tr: "Kapanan sekmeleri aninda yeniden acin ve gezinme akisina kesintisiz devam edin." } },
+        { id: "pomodoro", icon: "https://lh3.googleusercontent.com/H3mwUdU9YpOA_qd4A-nmXnFcLgLcBAadiMPJR7v2OZAsZVJMEaBQtPHvEyMb9ywSdEyQUP5-vYHpszU4nxBbuUPoZQ=s128", url: "https://chromewebstore.google.com/detail/bkbiklcbhkpphflodkdoedlokkknnebh", category: "productivity", names: { en: "Pomodoro Focus Timer", pt_BR: "Timer Pomodoro de Foco", es: "Temporizador Pomodoro de Enfoque", fr: "Minuteur Pomodoro Focus", de: "Pomodoro-Fokus-Timer", it: "Timer Pomodoro Focus", ja: "ポモドーロ集中タイマー", ko: "포모도로 집중 타이머", zh_CN: "番茄专注计时器", ru: "Таймер фокуса Pomodoro", ar: "مؤقت بومودورو للتركيز", hi: "पोमोडोरो फोकस टाइमर", tr: "Pomodoro Odak Zamanlayicisi" }, descriptions: { en: "Boost concentration with a clean Pomodoro timer workflow that helps you stay focused and avoid burnout.", pt_BR: "Aumente a concentracao com um fluxo Pomodoro limpo para manter foco e evitar esgotamento.", es: "Mejora la concentracion con un flujo Pomodoro claro para mantener el enfoque y evitar agotamiento.", fr: "Ameliorez votre concentration avec un flux Pomodoro clair pour rester focalise et eviter l'epuisement.", de: "Steigern Sie die Konzentration mit einem klaren Pomodoro-Workflow und vermeiden Sie Uberlastung.", it: "Aumenta la concentrazione con un flusso Pomodoro pulito per restare focalizzato.", ja: "シンプルなポモドーロワークフローで集中力を高め、疲労を防ぎます。", ko: "깔끔한 포모도로 워크플로우로 집중력을 높이고 번아웃을 줄이세요.", zh_CN: "通过简洁的番茄工作流提升专注，避免过度疲劳。", ru: "Повышайте концентрацию с помощью простого Pomodoro-цикла и снижайте риск выгорания.", ar: "عزز التركيز عبر تدفق بومودورو بسيط يساعدك على تجنب الارهاق.", hi: "क्लीन पोमोडोरो वर्कफ़्लो के साथ फोकस बढ़ाएं और बर्नआउट से बचें।", tr: "Temiz bir Pomodoro akisiyla odagi artirin ve tukenmisi onleyin." } }
       ];
 
       const preferredAllOrder = ["clock", "img", "undo"];
@@ -582,7 +584,7 @@
       }
 
       function renderCards() {
-        const query = searchInput.value.trim().toLowerCase();
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
         const prioritized = [
           ...preferredAllOrder.map((id) => extensionData.find((item) => item.id === id)).filter(Boolean),
           ...extensionData.filter((item) => !preferredAllOrder.includes(item.id))
@@ -626,25 +628,27 @@
       }
 
       function applyUiTexts() {
-        document.getElementById("eyebrowText").textContent = t("eyebrow");
-        document.getElementById("languageLabel").textContent = t("language");
-        document.getElementById("heroTitle").textContent = t("heroTitle");
-        document.getElementById("heroSubtitle").textContent = t("heroSubtitle");
-        document.getElementById("heroCta").textContent = t("heroCta");
-        document.getElementById("sectionTitle").textContent = t("sectionTitle");
-        document.getElementById("sectionSubtitle").textContent = t("sectionSubtitle");
-        searchInput.placeholder = t("searchPlaceholder");
-        emptyState.textContent = t("empty");
-        document.getElementById("whyTitle").textContent = t("whyTitle");
-        document.getElementById("benefitFastTitle").textContent = t("fastTitle");
-        document.getElementById("benefitFastText").textContent = t("fastText");
-        document.getElementById("benefitPrivacyTitle").textContent = t("privacyTitle");
-        document.getElementById("benefitPrivacyText").textContent = t("privacyText");
-        document.getElementById("benefitEasyTitle").textContent = t("easyTitle");
-        document.getElementById("benefitEasyText").textContent = t("easyText");
-        document.getElementById("benefitChromeTitle").textContent = t("chromeTitle");
-        document.getElementById("benefitChromeText").textContent = t("chromeText");
-        document.getElementById("footerText").textContent = t("footer");
+        const setText = (id, value) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = value;
+        };
+        setText("languageLabel", t("language"));
+        setText("sectionTitle", t("sectionTitle"));
+        setText("sectionSubtitle", t("sectionSubtitle"));
+        if (searchInput) {
+          searchInput.placeholder = t("searchPlaceholder");
+        }
+        setText("emptyState", t("empty"));
+        setText("whyTitle", t("whyTitle"));
+        setText("benefitFastTitle", t("fastTitle"));
+        setText("benefitFastText", t("fastText"));
+        setText("benefitPrivacyTitle", t("privacyTitle"));
+        setText("benefitPrivacyText", t("privacyText"));
+        setText("benefitEasyTitle", t("easyTitle"));
+        setText("benefitEasyText", t("easyText"));
+        setText("benefitChromeTitle", t("chromeTitle"));
+        setText("benefitChromeText", t("chromeText"));
+        setText("footerText", t("footer"));
       }
 
       function populateLanguageSelector() {
@@ -670,7 +674,9 @@
       populateLanguageSelector();
       currentLang = detectBestLanguage();
       document.getElementById("year").textContent = new Date().getFullYear();
-      searchInput.addEventListener("input", renderCards);
+      if (searchInput) {
+        searchInput.addEventListener("input", renderCards);
+      }
       languageSelect.addEventListener("change", (event) => applyLanguage(event.target.value));
       applyLanguage(currentLang);
     })();
