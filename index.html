@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Powerful Browser Extensions for Everyday Productivity</title>
+  <meta name="description" content="Discover simple, fast and useful Chrome extensions built to make your browsing experience better.">
+  <style>
+    :root {
+      --bg: #080b14;
+      --bg-soft: #111727;
+      --surface: rgba(19, 24, 40, 0.72);
+      --surface-border: rgba(255, 255, 255, 0.1);
+      --text: #f3f6ff;
+      --text-muted: #aab3cc;
+      --primary: #6d8dff;
+      --primary-2: #39d0ff;
+      --shadow: 0 18px 45px rgba(3, 8, 23, 0.45);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% -2%, rgba(82, 109, 242, 0.22), transparent 34%),
+        radial-gradient(circle at 90% 0%, rgba(22, 175, 255, 0.18), transparent 28%),
+        linear-gradient(170deg, #070a12 0%, #0b1020 52%, #0f1426 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding: 10px 15px;
+    }
+
+    .container {
+      width: min(1350px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      padding: 72px 34px;
+      border-radius: 28px;
+      border: 1px solid var(--surface-border);
+      background:
+        linear-gradient(135deg, rgba(73, 94, 196, 0.24), rgba(20, 201, 255, 0.12)),
+        rgba(10, 16, 30, 0.78);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(1px);
+      z-index: 0;
+    }
+
+    .hero::before {
+      width: 230px;
+      height: 230px;
+      right: -60px;
+      top: -80px;
+      background: radial-gradient(circle, rgba(87, 118, 255, 0.45), rgba(87, 118, 255, 0));
+    }
+
+    .hero::after {
+      width: 210px;
+      height: 210px;
+      left: -80px;
+      bottom: -95px;
+      background: radial-gradient(circle, rgba(57, 208, 255, 0.35), rgba(57, 208, 255, 0));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #d2dcff;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      margin-bottom: 18px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.14;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+      max-width: 840px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      font-weight: 700;
+      text-decoration: none;
+      color: white;
+      border-radius: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(130deg, var(--primary), var(--primary-2));
+      box-shadow: 0 12px 30px rgba(59, 98, 255, 0.32);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(59, 98, 255, 0.4);
+    }
+
+    .section {
+      margin-top: 48px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .controls {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      padding: 0 15px;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+      font-size: 0.95rem;
+    }
+
+    .search-wrap input::placeholder {
+      color: #99a4c4;
+    }
+
+    .search-wrap input:focus {
+      border-color: rgba(109, 141, 255, 0.65);
+      box-shadow: 0 0 0 3px rgba(109, 141, 255, 0.2);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--surface-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: #dce4ff;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(109, 141, 255, 0.7);
+      color: white;
+    }
+
+    .filter-btn.active {
+      color: white;
+      border-color: rgba(109, 141, 255, 0.9);
+      background: linear-gradient(120deg, rgba(109, 141, 255, 0.24), rgba(57, 208, 255, 0.24));
+    }
+
+    .extensions-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .extension-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--surface-border);
+      background: var(--surface);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .extension-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(109, 141, 255, 0.58);
+      box-shadow: 0 24px 52px rgba(10, 16, 35, 0.55);
+    }
+
+    .card-head {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 13px;
+    }
+
+    .card-head img {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      flex-shrink: 0;
+    }
+
+    .card-head h3 {
+      font-size: 1rem;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    .tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      align-self: flex-start;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(109, 141, 255, 0.14);
+      border: 1px solid rgba(109, 141, 255, 0.4);
+      color: #d9e2ff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .extension-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    .store-link {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #eef3ff;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 11px 13px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .store-link:hover {
+      border-color: rgba(109, 141, 255, 0.75);
+      background: linear-gradient(120deg, rgba(109, 141, 255, 0.22), rgba(57, 208, 255, 0.22));
+      transform: translateY(-1px);
+    }
+
+    .why-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    }
+
+    .benefit {
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 18px;
+    }
+
+    .benefit h4 {
+      margin-bottom: 7px;
+      font-size: 1rem;
+    }
+
+    .benefit p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      border-radius: 14px;
+      padding: 22px;
+      color: #c6cfea;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.03);
+      display: none;
+    }
+
+    footer {
+      margin-top: 52px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 20px;
+      padding-bottom: 12px;
+      color: #9da8c9;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 780px) {
+      body {
+        padding: 18px;
+      }
+
+      .hero {
+        padding: 54px 20px;
+      }
+
+      .extension-card {
+        min-height: 230px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header >
+    </header>
+
+    <section class="section" id="extensions">
+      <h2 class="section-title">Featured Extensions</h2>
+      <p class="section-subtitle">Choose from practical tools designed to save time, improve focus, and streamline daily browsing tasks.</p>
+
+      <div class="controls">
+        <!-- <div class="search-wrap">
+          <input id="searchInput" type="text" placeholder="Search extensions by name...">
+        </div> -->
+        <div class="filters" id="filterButtons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="productivity">Productivity</button>
+          <button class="filter-btn" data-filter="tools">Tools</button>
+          <button class="filter-btn" data-filter="finance">Finance</button>
+          <button class="filter-btn" data-filter="media">Media</button>
+          <button class="filter-btn" data-filter="privacy">Privacy</button>
+        </div>
+      </div>
+
+      <div class="extensions-grid" id="extensionsGrid">
+        <article class="extension-card" data-category="tools" data-name="Image Downloader Assistant - Batch Save Images">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/-2D7Iu4_cAyMYGxmF-pn1KYO78BjJhzjdOH-BnwnLac0c5PVyN841wCXtsHeifAPIpiJwY_9D8D6-Fv2rABBBsIYky0=s128" alt="Assistente de Download de Imagens icon">
+            <h3>Image Downloader Assistant - Batch Save Images</h3>
+          </div>
+          <span class="tag">Tools</span>
+          <p>Save images from websites in seconds with a clean one-click workflow built for speed and convenience.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/mmehagcgobifajenenomcbbcdabnjooh" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="media" data-name="Video Speed Controller - Universal Video Playback Speed">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/WPKtA0OSXayHlAIYtpyCf6jq7sUEvbQvKBsjixVx58f-m44t9Rqfr0i1itm2682uvxKNyzCcmTt8Tcx7G9xGSVA-r7w=s128" alt="Controlador de Velocidade de Video icon">
+            <h3>Video Speed Controller - Universal Video Playback Speed</h3>
+          </div>
+          <span class="tag">Media</span>
+          <p>Take control of your playback with smooth speed adjustments for lessons, podcasts, and streaming sessions.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/gmpgnedihbpapkkeafjehjnlgnghlmjd" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="tools" data-name="QR Code Generator &amp; Reader">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/I1knD14UiCTQON8jQ_OGdyMKFmYe6d8_iNreZ2f48mfdq1RSA3jzyd0A5cz1vY85yJUkT45_rNkqVv_sxWpwr_-ccA=s128" alt="Gerador e Leitor de QR Code icon">
+            <h3>QR Code Generator &amp; Reader</h3>
+          </div>
+          <span class="tag">Tools</span>
+          <p>Create and scan QR codes instantly from your browser, ideal for links, sharing, and quick access workflows.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/afjjlnbbgojjefpnkfopdiajidjeijmb" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="privacy" data-name="One-Click Cleaner - History, Cache &amp; Cookies">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/hHjmlc7O1IblCmydQopiNe--v_8ZoAIDJ0dbPL_9R9jkV-GQZWmad0x5qfHfoyhaX3O8L2NdnBaJKeftwPhTDieOUA=s128" alt="One-Click Cleaner icon">
+            <h3>One-Click Cleaner - History, Cache &amp; Cookies</h3>
+          </div>
+          <span class="tag">Privacy</span>
+          <p>Clear browsing traces, cookies, and cache with one secure click to keep your browser private and optimized.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/ibdojpbaclajkbmjmcfneimfnjpebcpo" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="tools" data-name="Chroma Color Picker">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/W8IGrLaxDKLEpPcfSasZkkEjSdQUsgjEyin4KyfNLing9efyh9zHUuuoWBkm4ahNm07sSHIeGc-hSiAa1MWcFfMP=s128" alt="Chroma Color Picker icon">
+            <h3>Chroma Color Picker</h3>
+          </div>
+          <span class="tag">Tools</span>
+          <p>Pick, copy, and manage accurate colors from any page with precision controls tailored for designers and developers.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/ghcgolhjnajkjeogfjkaakdfohebocfa" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="finance" data-name="Real-Time Crypto Price Alert Tracker">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/qz5axjSP8KmFJQ8BZAm9wH25uit7AhdQl_hgB_FvATRWl7K6D7myfrHtgQt5Hm93iI-74zL7OPRf__tt3cyf7oSaRQ=s128" alt="Real-Time Crypto Price Alert Tracker icon">
+            <h3>Real-Time Crypto Price Alert Tracker</h3>
+          </div>
+          <span class="tag">Finance</span>
+          <p>Track crypto markets in real time and receive smart alerts so you can react faster to every important move.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/fiebjoapbhobkgnfkeefpjfembalkngj" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="tools" data-name="Calculator Plus - Dark Mode &amp; Keyboard">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/pWfOSqGubNHaRR4uVCAo4LERubsMkC3MnLziC26tnKp1lkTfDKeXCLZfL1KX6ogxGhTzBDTwwdfCKCgW1e2Ng6nI8Uw=s128" alt="Calculadora Plus icon">
+            <h3>Calculator Plus - Dark Mode &amp; Keyboard</h3>
+          </div>
+          <span class="tag">Tools</span>
+          <p>Handle quick calculations directly in your browser with a polished interface built for everyday accuracy.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/bajijfddodanimeolonbjdaehmphfkpp" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="productivity" data-name="Monitix - Stock &amp; Crypto Price Alert &amp; Tracker">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/v6vDgedIpXZU2WcZ8I_mqXHvU-ehfVGYvaShsnSuXDvSl_sUvX_5wxJFc_hs48tyabvWcFdlivaW-1Og9YGEQ5Ssbek=s128" alt="Monitix icon">
+            <h3>Monitix - Stock &amp; Crypto Price Alert &amp; Tracker</h3>
+          </div>
+          <span class="tag">Productivity</span>
+          <p>Stay on top of your daily workflow with focused monitoring tools that help you work smarter, not harder.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/cjekmkpgodnejbnmpkbaaoaaggbknjjm" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="productivity" data-name="Alarm, Timer &amp; Stopwatch for Browser">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/hnrhNE1eeghpv5olY1JZPvhapQw9IhwE2PHlTLKIrVmCrPK-n7JlDe2eem-wn73eCAebrKGTpDrOjds88a0-cwg10q4=s128" alt="Alarme, Timer e Cronômetro icon">
+            <h3>Alarm, Timer &amp; Stopwatch for Browser</h3>
+          </div>
+          <span class="tag">Productivity</span>
+          <p>Manage tasks and breaks with reliable alarms, timers, and stopwatch tools that keep your schedule on track.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/dobehameiiojoddgpdjjgonghbjejfjk" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="productivity" data-name="Clock, Alarm, Timer &amp; Stopwatch">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/Z7ccr1fU_n3XxnC6ju5SqkvO5UMmTLz3AO32yu_C42rHg3kl92XF5sFoY_Ueq4fVX272csRvP3bK1Fczhkz5fn6P31I=s128" alt="Relógio, Alarme, Temporizador e Cronômetro icon">
+            <h3>Clock, Alarm, Timer &amp; Stopwatch</h3>
+          </div>
+          <span class="tag">Productivity</span>
+          <p>Keep your day organized with an all-in-one time toolkit designed for focus, planning, and better routines.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/najjeheikebkcgojohngpeapdambdlnh" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="tools" data-name="Full Page Capture - Screenshot Tool">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/97dPGEq2lWCLGV76EJCKRZN8J5WKIZa3g0pmFAHPN_9anXKX5vcEbENHAuKQj-HMCW26E7tvifwIWOREbordzLW2Dw=s128" alt="Full Page Capture icon">
+            <h3>Full Page Capture - Screenshot Tool</h3>
+          </div>
+          <span class="tag">Tools</span>
+          <p>Capture complete website screenshots with one click, perfect for reports, references, and visual collaboration.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/cmfoidiacmlllaifebpdflabafobibnk" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="productivity" data-name="Undo Closed Tabs - Reopen Last Tab">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/T4Sage3T7X4fogqiBJomwmVTh7AjXE47y3UKL-EfDeppAN4xJ8UeMHWW9AwVWw_XopYQGzdhxcRGauDBX9O3NHud=s128" alt="Desfazer Abas Fechadas icon">
+            <h3>Undo Closed Tabs - Reopen Last Tab</h3>
+          </div>
+          <span class="tag">Productivity</span>
+          <p>Reopen closed tabs instantly and recover your browsing flow without interruptions or lost context.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/pmiplgmplhmiaieiggpnoocpbdlcoino" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <article class="extension-card" data-category="productivity" data-name="Pomodoro Focus Timer">
+          <div class="card-head">
+            <img src="https://lh3.googleusercontent.com/H3mwUdU9YpOA_qd4A-nmXnFcLgLcBAadiMPJR7v2OZAsZVJMEaBQtPHvEyMb9ywSdEyQUP5-vYHpszU4nxBbuUPoZQ=s128" alt="Pomodoro Focus Timer icon">
+            <h3>Pomodoro Focus Timer</h3>
+          </div>
+          <span class="tag">Productivity</span>
+          <p>Boost concentration with a clean Pomodoro timer workflow that helps you stay focused and avoid burnout.</p>
+          <a class="store-link" href="https://chromewebstore.google.com/detail/bkbiklcbhkpphflodkdoedlokkknnebh" target="_blank" rel="noopener noreferrer">View on Chrome Web Store</a>
+        </article>
+
+        <div id="emptyState" class="empty-state">No extensions found for your current filters.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Why use these extensions?</h2>
+      <div class="why-grid">
+        <article class="benefit">
+          <h4>Fast & Lightweight</h4>
+          <p>Optimized to deliver practical features without slowing down your everyday browsing experience.</p>
+        </article>
+        <article class="benefit">
+          <h4>Privacy Friendly</h4>
+          <p>Built with a privacy-first mindset, focused on useful functionality and transparent behavior.</p>
+        </article>
+        <article class="benefit">
+          <h4>Easy to Use</h4>
+          <p>Simple interfaces and one-click actions make each extension intuitive from the first use.</p>
+        </article>
+        <article class="benefit">
+          <h4>Built for Chrome</h4>
+          <p>Crafted to fit naturally into the Chrome workflow, with smooth performance and reliable integration.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Chrome Extensions Portfolio. Built to help people browse smarter every day.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const extensionsGrid = document.getElementById("extensionsGrid");
+      const cards = Array.from(document.querySelectorAll(".extension-card"));
+      const searchInput = document.getElementById("searchInput");
+      const emptyState = document.getElementById("emptyState");
+      let activeFilter = "all";
+      const originalOrder = [...cards];
+      const preferredAllOrder = [
+        "Clock, Alarm, Timer & Stopwatch",
+        "Image Downloader Assistant - Batch Save Images",
+        "Undo Closed Tabs - Reopen Last Tab"
+      ];
+
+      function orderCards() {
+        const preferred = new Set(preferredAllOrder);
+        const byName = new Map(cards.map((card) => [card.dataset.name, card]));
+
+        if (activeFilter === "all") {
+          preferredAllOrder.forEach((name) => {
+            const card = byName.get(name);
+            if (card) extensionsGrid.appendChild(card);
+          });
+
+          originalOrder.forEach((card) => {
+            if (!preferred.has(card.dataset.name)) {
+              extensionsGrid.appendChild(card);
+            }
+          });
+          return;
+        }
+
+        originalOrder.forEach((card) => {
+          extensionsGrid.appendChild(card);
+        });
+      }
+
+      function applyFilters() {
+        orderCards();
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const category = card.dataset.category;
+          const name = card.dataset.name.toLowerCase();
+          const categoryMatch = activeFilter === "all" || category === activeFilter;
+          const searchMatch = name.includes(query);
+          const shouldShow = categoryMatch && searchMatch;
+
+          card.style.display = shouldShow ? "flex" : "none";
+          if (shouldShow) visibleCount++;
+        });
+
+        emptyState.style.display = visibleCount === 0 ? "block" : "none";
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+          activeFilter = button.dataset.filter;
+          applyFilters();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener("input", applyFilters);
+      }
+      document.getElementById("year").textContent = new Date().getFullYear();
+      applyFilters();
+    })();
+  </script>
+</body>
+</html>
